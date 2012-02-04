@@ -1,8 +1,0 @@
-C:\Users\Administrator\Documents\Software Development\Github\DizzleRasta\DizzleRasta\src\app\DizzleRasta.Web\bin\DizzleRasta.Web.dll
-C:\Users\Administrator\Documents\Software Development\Github\DizzleRasta\DizzleRasta\src\app\DizzleRasta.Web\bin\DizzleRasta.Web.pdb
-C:\Users\Administrator\Documents\Software Development\Github\DizzleRasta\DizzleRasta\src\app\DizzleRasta.Web\bin\OpenRasta.Codecs.WebForms.dll
-C:\Users\Administrator\Documents\Software Development\Github\DizzleRasta\DizzleRasta\src\app\DizzleRasta.Web\bin\OpenRasta.dll
-C:\Users\Administrator\Documents\Software Development\Github\DizzleRasta\DizzleRasta\src\app\DizzleRasta.Web\bin\OpenRasta.Hosting.AspNet.dll
-C:\Users\Administrator\Documents\Software Development\Github\DizzleRasta\DizzleRasta\src\app\DizzleRasta.Web\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\Administrator\Documents\Software Development\Github\DizzleRasta\DizzleRasta\src\app\DizzleRasta.Web\obj\Debug\DizzleRasta.Web.dll
-C:\Users\Administrator\Documents\Software Development\Github\DizzleRasta\DizzleRasta\src\app\DizzleRasta.Web\obj\Debug\DizzleRasta.Web.pdb
