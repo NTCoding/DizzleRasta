@@ -1,7 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DizzleRasta.Web", "src\app\DizzleRasta.Web\DizzleRasta.Web.csproj", "{750B1354-D5D1-46B3-BAF8-A875FF7DF647}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{750B1354-D5D1-46B3-BAF8-A875FF7DF647}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{750B1354-D5D1-46B3-BAF8-A875FF7DF647}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{750B1354-D5D1-46B3-BAF8-A875FF7DF647}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{750B1354-D5D1-46B3-BAF8-A875FF7DF647}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
