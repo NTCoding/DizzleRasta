@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="Views\Artists.aspx" />
     <Content Include="Views\HomeView.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -79,8 +80,10 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\ArtistsHandler.cs" />
     <Compile Include="Handlers\HomeHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Artist.cs" />
     <Compile Include="Resources\Home.cs" />
   </ItemGroup>
   <ItemGroup />

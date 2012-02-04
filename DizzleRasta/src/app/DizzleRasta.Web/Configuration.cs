@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DizzleRasta.Web.Handlers;
 using DizzleRasta.Web.Resources;
 using OpenRasta.Configuration;
@@ -18,6 +19,13 @@ namespace DizzleRasta.Web
 					.AtUri("/home")
 					.HandledBy<HomeHandler>()
 					.RenderedByAspx("~/Views/HomeView.aspx");
+
+
+				ResourceSpace.Has
+					.ResourcesOfType<IEnumerable<Artist>>()
+					.AtUri("/artists")
+					.HandledBy<ArtistsHandler>()
+					.RenderedByAspx("~/Views/Artists.aspx");
 			}
 		}
 	}
