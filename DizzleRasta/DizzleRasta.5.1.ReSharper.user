@@ -12,6 +12,13 @@
       <Item value="using" priority="0" />
       <Item value="OpenRastaConfiguration`0" priority="0" />
       <Item value="ResourceSpace`0" priority="0" />
+      <Item value="public" priority="0" />
+      <Item value="object" priority="0" />
+      <Item value="return" priority="0" />
+      <Item value="new" priority="0" />
+      <Item value="Title" priority="0" />
+      <Item value="Resource" priority="1" />
+      <Item value="Resources" priority="0" />
     </ItemStatistics>
     <ItemStatistics item="Qualified:@OpenRasta.Configuration.OpenRastaConfiguration">
       <Item value="Manual" priority="0" />
@@ -28,25 +35,36 @@
     <ItemStatistics item="Qualified:OpenRasta.Configuration.Fluent.IUriDefinition">
       <Item value="HandledBy`0" priority="0" />
     </ItemStatistics>
+    <ItemStatistics item="Qualified:DizzleRasta.Web.Resources.Home">
+      <Item value="Title" priority="0" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:OpenRasta.Configuration.Fluent.IHandlerForResourceWithUriDefinition">
+      <Item value="RenderedByAspx`0" priority="0" />
+    </ItemStatistics>
   </CompletionStatisticsManager>
   <RecentFiles>
     <RecentFiles>
       <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/f:Default.aspx" caret="114" fromTop="1" />
-      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/f:Web.config" caret="919" fromTop="23" />
-      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/d:Resources/f:Home.cs" caret="114" fromTop="6" />
-      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/d:Handlers/f:HomeHandler.cs" caret="72" fromTop="4" />
-      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/f:Configuration.cs" caret="464" fromTop="22" />
+      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/f:Web.config" caret="1023" fromTop="14" />
+      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/f:Configuration.cs" caret="452" fromTop="4" />
+      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/d:Handlers/f:HomeHandler.cs" caret="200" fromTop="11" />
+      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/d:Resources/f:Home.cs" caret="114" fromTop="3" />
+      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/d:Views/f:HomeView.aspx" caret="339" fromTop="9" />
     </RecentFiles>
     <RecentEdits>
       <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/f:Web.config" caret="222" fromTop="11" />
-      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/f:Web.config" caret="1328" fromTop="39" />
+      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/f:Web.config" caret="1430" fromTop="39" />
       <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/f:Default.aspx" caret="114" fromTop="1" />
-      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/f:Web.config" caret="863" fromTop="19" />
-      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/f:Web.config" caret="933" fromTop="23" />
+      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/f:Web.config" caret="965" fromTop="19" />
+      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/f:Web.config" caret="1035" fromTop="23" />
       <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/d:Resources/f:Home.cs" caret="123" fromTop="6" />
-      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/d:Handlers/f:HomeHandler.cs" caret="85" fromTop="4" />
       <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/f:Configuration.cs" caret="360" fromTop="11" />
-      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/f:Configuration.cs" caret="446" fromTop="18" />
+      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/d:Handlers/f:HomeHandler.cs" caret="188" fromTop="8" />
+      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/d:Handlers/f:HomeHandler.cs" caret="0" fromTop="8" />
+      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/f:Web.config" caret="685" fromTop="16" />
+      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/f:Configuration.cs" caret="493" fromTop="19" />
+      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/d:Views/f:HomeView.aspx" caret="418" fromTop="14" />
+      <File id="750B1354-D5D1-46B3-BAF8-A875FF7DF647/d:Views/f:HomeView.aspx" caret="0" fromTop="0" />
     </RecentEdits>
   </RecentFiles>
   <NAntValidationSettings>
