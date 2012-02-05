@@ -8,16 +8,7 @@ namespace DizzleRasta.Web.Services
 {
 	public class SevenDigitalResponseParser 
 	{
-		//public IEnumerable<Tag> ParseTag(string tagsString)
-		//{
-		//    var doc = XDocument.Parse(tagsString);
-
-		//    var tagNodes = doc.Descendants("tag");
-
-		//    return tagNodes.Select(ParseTag)
-		//        .Where(t => t != null);
-		//}
-
+		
 		public IEnumerable<Release> ParseReleasesFrom(string response)
 		{
 			var xml = XDocument.Parse(response);
@@ -58,6 +49,33 @@ namespace DizzleRasta.Web.Services
 			var imageUrl = TryGetValue("image", element);
 
 			return new Artist {Id = int.Parse(id), ImageUrl = imageUrl, Name = name};
+		}
+
+		public IEnumerable<Track> ParseTracksFrom(string response)
+		{
+			var xml = XDocument.Parse(response);
+
+			var tracks = xml.Descendants("track");
+
+			return tracks.Select(ParseTrack);
+		}
+
+		public Track ParseTrack(XElement element)
+		{
+			var id       = TryGetAttribute("id", element);
+			var title    = TryGetValue("title", element);
+			var version  = TryGetValue("version", element);
+			var artistId = ParseArtist(element).Id;
+			var price    = GetPrice(element);
+
+			return new Track { Id = int.Parse(id), Title = title, Version = version, ArtistId = artistId, Price = price };
+		}
+
+		private decimal GetPrice(XElement element)
+		{
+			var a = element.Descendants("value").Single();
+
+			return string.IsNullOrWhiteSpace(a.Value) ? 0 : decimal.Parse(a.Value);
 		}
 
 		private string TryGetAttribute(string attributeName, XElement element)

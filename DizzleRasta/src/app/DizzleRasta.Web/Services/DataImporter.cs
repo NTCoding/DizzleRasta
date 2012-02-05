@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using DizzleRasta.Web.Infrastructure;
 using DizzleRasta.Web.Resources;
 using Raven.Client;
+using Raven.Client.Linq;
 
 namespace DizzleRasta.Web.Services
 {
@@ -22,7 +25,7 @@ namespace DizzleRasta.Web.Services
 			artists.ForEach(session.Store);
 		}
 
-		public void Import3000Releases(IDocumentSession session)
+		public void ImportReleases(IDocumentSession session)
 		{
 			var releases = new List<Release>();
 
@@ -37,5 +40,32 @@ namespace DizzleRasta.Web.Services
 			releases.ForEach(session.Store);
 		}
 
+		public void ImportPopularTracks(IDocumentSession session)
+		{
+			var tracks = new List<Track>();
+
+			var ids = GetReleaseIds(session);
+
+			var tasks = new List<Task<IEnumerable<Track>>>();
+			for (int i = 0; i < ids.Count(); i++)
+			{
+				var id = ids.ElementAt(i).ToString();
+				var ta = new Task<IEnumerable<Track>>(() => api.GetTracks(id));
+				tasks.Add(ta);
+				ta.Start();
+			}
+
+			Task.WaitAll(tasks.ToArray());
+
+			tasks.ForEach(x => tracks.AddRange(x.Result)); ;
+
+			tracks.ForEach(session.Store);
+		}
+
+		private IEnumerable<int> GetReleaseIds(IDocumentSession session)
+		{
+			var t = session.Query<Release>().ToList();
+			return t.Select(r => r.Id);
+		}
 	}
 }
