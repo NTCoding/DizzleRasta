@@ -1,32 +1,18 @@
 using System;
 using System.Collections.Generic;
 using DizzleRasta.Web.Resources;
+using DizzleRasta.Web.Services;
 
 namespace DizzleRasta.Web.Handlers
 {
 	public class ArtistsHandler
 	{
-		private ArtistRetriever retriever = new ArtistRetriever();
+		private ApiQuerier api = new ApiQuerier();
 
 		public object Get()
 		{
-			return retriever.GetAllArtists();
+			return api.GetArtistsByName("n", 50);
 		}
 	}
-
-	public class ArtistRetriever
-	{
-		public IEnumerable<Artist> GetAllArtists()
-		{
-			for (int i = 0; i < 10; i++)
-			{
-				yield return new Artist
-				             	{
-									Id       = 100 + 1,
-									Name     = "Artist " + i,
-									ImageUrl = "http://www.electricpig.co.uk/wp-content/uploads/2008/09/7digital1.jpg"
-				             	};
-			}
-		}
-	}
+	
 }

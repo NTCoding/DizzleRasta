@@ -99,6 +99,9 @@
     <Compile Include="Resources\Home.cs" />
     <Compile Include="Resources\Release.cs" />
     <Compile Include="Resources\Track.cs" />
+    <Compile Include="Services\ApiQuerier.cs" />
+    <Compile Include="Services\DataImporter.cs" />
+    <Compile Include="Services\SevenDigitalResponseParser.cs" />
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>
