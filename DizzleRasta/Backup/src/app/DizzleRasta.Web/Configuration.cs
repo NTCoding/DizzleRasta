@@ -20,6 +20,7 @@ namespace DizzleRasta.Web
 					.HandledBy<HomeHandler>()
 					.RenderedByAspx("~/Views/HomeView.aspx");
 
+
 				ResourceSpace.Has
 					.ResourcesOfType<IEnumerable<Artist>>()
 					.AtUri("/artists")
@@ -31,13 +32,6 @@ namespace DizzleRasta.Web
 					.AtUri("/releases")
 					.HandledBy<ReleasesHandler>()
 					.RenderedByAspx("~/Views/Releases.aspx");
-
-				ResourceSpace.Has
-					.ResourcesOfType<IEnumerable<Track>>()
-					.AtUri("/tracks")
-					.HandledBy<TracksHandler>()
-					.RenderedByAspx("~/Views/Tracks.aspx");
-				
 			}
 		}
 	}

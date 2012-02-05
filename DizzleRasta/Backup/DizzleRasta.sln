@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 11
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DizzleRasta.Web", "src\app\DizzleRasta.Web\DizzleRasta.Web.csproj", "{750B1354-D5D1-46B3-BAF8-A875FF7DF647}"
 EndProject
 Global
