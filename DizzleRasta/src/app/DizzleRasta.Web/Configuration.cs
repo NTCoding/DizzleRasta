@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using DizzleRasta.Web.Handlers;
 using DizzleRasta.Web.Infrastructure;
+using DizzleRasta.Web.Infrastructure.Pipeline;
 using DizzleRasta.Web.Resources;
 using OpenRasta.Configuration;
 using OpenRasta.DI;
@@ -41,8 +42,13 @@ namespace DizzleRasta.Web
 					.HandledBy<TracksHandler>()
 					.RenderedByAspx("~/Views/Tracks.aspx");
 
-				ResourceSpace.Uses.Resolver.AddDependencyInstance(
-					typeof (IDocumentSession),DocumentStoreHolder.DocumentStore.OpenSession(),DependencyLifetime.PerRequest);
+				// TODO - fork and fix or use different container?
+				//ResourceSpace.Uses.Resolver.AddDependencyInstance<IDocumentSession>(
+				//    DocumentStoreHolder.DocumentStore.OpenSession(),DependencyLifetime.PerRequest);
+
+				ResourceSpace.Uses.Resolver.AddDependencyInstance<IDocumentSession>(DocumentStoreHolder.DocumentStore.OpenSession());
+
+				ResourceSpace.Uses.PipelineContributor<SessionCloser>();
 
 			}
 		}

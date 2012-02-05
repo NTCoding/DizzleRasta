@@ -12,6 +12,7 @@
 </head>
 <body>
 	<h1>Artists</h1>
+	<b>Here are a random selection of artists</b>
    <div>
 		<% foreach (var artist in Resource)
 		{ %>

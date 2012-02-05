@@ -1,17 +1,27 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using DizzleRasta.Web.Resources;
 using DizzleRasta.Web.Services;
+using Raven.Client;
 
 namespace DizzleRasta.Web.Handlers
 {
 	public class ArtistsHandler
 	{
-		private ApiQuerier api = new ApiQuerier();
+		private IDocumentSession session;
+
+		public ArtistsHandler(IDocumentSession session)
+		{
+			this.session = session;
+		}
 
 		public object Get()
 		{
-			return api.GetArtistsByName("n", 50);
+			return session
+				.Query<Artist>()
+				.Customize(obj => obj.RandomOrdering())
+				.Take(25);
 		}
 	}
 	
