@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using DizzleRasta.Web.Infrastructure;
 using DizzleRasta.Web.Resources;
+using Raven.Client;
 
 namespace DizzleRasta.Web.Services
 {
@@ -8,7 +9,7 @@ namespace DizzleRasta.Web.Services
 	{
 		private ApiQuerier api = new ApiQuerier();
 
-		public void ImportUpto100ArtistsPerLetter()
+		public void ImportUpto100ArtistsPerLetter(IDocumentSession session)
 		{
 			var artists = new List<Artist>();
 
@@ -17,11 +18,7 @@ namespace DizzleRasta.Web.Services
 				artists.AddRange(api.GetArtistsByName(c.ToString(), 100));
 			}
 
-			var store = DocumentStoreHolder.DocumentStore;
-			using (var session = store.OpenSession())
-			{
-				artists.ForEach(session.Store);
-			}
+			artists.ForEach(session.Store);
 		}
 	}
 }

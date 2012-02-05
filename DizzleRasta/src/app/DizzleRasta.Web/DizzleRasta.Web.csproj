@@ -120,6 +120,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="%40App_Data\Raven\raven-data.ico" />
     <Content Include="Default.aspx" />
     <Content Include="Raven.Studio.xap" />
     <Content Include="Views\Artists.aspx" />
@@ -161,7 +162,19 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="%40App_Data\Raven\IndexDefinitions\TemporaryIndexDefinitionsAsSource\" />
+    <Folder Include="%40App_Data\Raven\temp\" />
     <Folder Include="Infrastructure\Pipeline\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="%40App_Data\Raven\Data" />
+    <None Include="%40App_Data\Raven\IndexDefinitions\Raven%252fDocumentsByEntityName.index" />
+    <None Include="%40App_Data\Raven\Indexes\Raven%252fDocumentsByEntityName\segments.gen" />
+    <None Include="%40App_Data\Raven\Indexes\Raven%252fDocumentsByEntityName\segments_1" />
+    <None Include="%40App_Data\Raven\logs\RVN.log" />
+    <None Include="%40App_Data\Raven\logs\RVNres00001.jrs" />
+    <None Include="%40App_Data\Raven\logs\RVNres00002.jrs" />
+    <None Include="%40App_Data\Raven\system\RVN.chk" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
