@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DizzleRasta.Web.Infrastructure;
 using DizzleRasta.Web.Resources;
 
 namespace DizzleRasta.Web.Services
@@ -14,7 +15,13 @@ namespace DizzleRasta.Web.Services
 			for (char c = 'A'; c <= 'Z'; c++)
 			{
 				artists.AddRange(api.GetArtistsByName(c.ToString(), 100));
-			} 
+			}
+
+			var store = DocumentStoreHolder.DocumentStore;
+			using (var session = store.OpenSession())
+			{
+				artists.ForEach(session.Store);
+			}
 		}
 	}
 }

@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
 using DizzleRasta.Web.Handlers;
+using DizzleRasta.Web.Infrastructure;
 using DizzleRasta.Web.Resources;
 using OpenRasta.Configuration;
+using OpenRasta.DI;
+using Raven.Client;
 
 namespace DizzleRasta.Web
 {
@@ -37,7 +40,10 @@ namespace DizzleRasta.Web
 					.AtUri("/tracks")
 					.HandledBy<TracksHandler>()
 					.RenderedByAspx("~/Views/Tracks.aspx");
-				
+
+				ResourceSpace.Uses.Resolver.AddDependencyInstance(
+					typeof (IDocumentSession),DocumentStoreHolder.DocumentStore.OpenSession(),DependencyLifetime.PerRequest);
+
 			}
 		}
 	}

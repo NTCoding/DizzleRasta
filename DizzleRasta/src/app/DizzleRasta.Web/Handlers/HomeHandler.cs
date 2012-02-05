@@ -1,4 +1,5 @@
 using DizzleRasta.Web.Resources;
+using DizzleRasta.Web.Services;
 
 namespace DizzleRasta.Web.Handlers
 {
