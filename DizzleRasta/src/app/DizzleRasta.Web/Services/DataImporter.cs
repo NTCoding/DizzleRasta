@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DizzleRasta.Web.Infrastructure;
 using DizzleRasta.Web.Resources;
@@ -20,5 +21,21 @@ namespace DizzleRasta.Web.Services
 
 			artists.ForEach(session.Store);
 		}
+
+		public void Import3000Releases(IDocumentSession session)
+		{
+			var releases = new List<Release>();
+
+			for (int i = 0; i < 10; i++)
+			{
+				var from = DateTime.Now.AddYears(-2).ToString("yyyyMMdd");
+				var to = DateTime.Now.ToString("yyyyMMdd");
+				var page = i + 1;
+				releases.AddRange(api.GetReleases(from, to, page, pageSize: 500));
+			}
+
+			releases.ForEach(session.Store);
+		}
+
 	}
 }

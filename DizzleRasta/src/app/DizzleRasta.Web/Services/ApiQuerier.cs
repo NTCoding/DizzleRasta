@@ -13,7 +13,7 @@ namespace DizzleRasta.Web.Services
 
 		private const string TagQueryUrl = "http://api.7digital.com/1.2/tag";
 		private const string OAuthQueryStringComponent = "oauth_consumer_key=7dwvjchqsj";
-		private const string ReleaseQueryUrl = @"http://api.7digital.com/1.2/release/bytag/top";
+		private const string ReleaseQueryUrl = @"http://api.7digital.com/1.2/release/bydate";
 		private const string SongQueryUrl = @"http://api.7digital.com/1.2/release/details";
 		private const string ArtistQueryUrl = "http://api.7digital.com/1.2/artist/browse";
 
@@ -31,18 +31,26 @@ namespace DizzleRasta.Web.Services
 
 		public IEnumerable<Artist> GetArtistsByName(string letter, int pageSize = 10)
 		{
-			var url = BuildUrl(ArtistQueryUrl, new[] { "letter=" + letter }, limit: pageSize);
+			var url = BuildUrl(ArtistQueryUrl, new[] { "letter=" + letter }, pageSize: pageSize);
 
 			var response = QueryApi(url);
 
 			return responseParser.ParseArtistsFrom(response);
 		}
-		
 
-		// TODO - separate class?
-		private Uri BuildUrl(string baseUrl, string[] queryStringComponents = null, int limit = 10)
+		public IEnumerable<Release> GetReleases(string @from, string to, int page, int pageSize)
 		{
-			string querystring = BuildQueryString(queryStringComponents, limit);
+			var url = BuildUrl(ReleaseQueryUrl, new[] {"fromDate=" + from, "toDate=" + to, "page=" + page}, pageSize);
+
+			var response = QueryApi(url);
+
+			return responseParser.ParseReleasesFrom(response);
+		}
+
+		// TODO - separate class with the urls?
+		private Uri BuildUrl(string baseUrl, string[] queryStringComponents = null, int pageSize = 10)
+		{
+			string querystring = BuildQueryString(queryStringComponents, pageSize);
 
 			return new Uri(baseUrl + querystring);
 		}
@@ -66,5 +74,7 @@ namespace DizzleRasta.Web.Services
 		{
 			return Client.DownloadString(url);
 		}
+
+		
 	}
 }

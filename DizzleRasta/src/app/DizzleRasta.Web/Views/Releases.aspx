@@ -8,7 +8,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Releases</title>
+    <title>Random Releases</title>
 </head>
 <body>
 	<h1>Releases</h1>
