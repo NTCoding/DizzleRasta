@@ -126,6 +126,7 @@
     <Content Include="Views\AddRelease.aspx" />
     <Content Include="Views\Artists.aspx" />
     <Content Include="Views\HomeView.aspx" />
+    <Content Include="Views\Release.aspx" />
     <Content Include="Views\Releases.aspx" />
     <Content Include="Views\Tracks.aspx" />
     <Content Include="Web.config" />

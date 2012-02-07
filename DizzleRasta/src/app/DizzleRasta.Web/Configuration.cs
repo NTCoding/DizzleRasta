@@ -50,6 +50,12 @@ namespace DizzleRasta.Web
 					.HandledBy<ReleaseHandler>();
 
 				ResourceSpace.Has
+					.ResourcesOfType<Release>()
+					.AtUri("/releases/{id}")
+					.HandledBy<ReleaseHandler>()
+					.RenderedByAspx("~/Views/Release.aspx");
+
+				ResourceSpace.Has
 					.ResourcesOfType<IEnumerable<Track>>()
 					.AtUri("/tracks")
 					.HandledBy<TracksHandler>()

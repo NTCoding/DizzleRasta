@@ -19,6 +19,11 @@ namespace DizzleRasta.Web.Handlers
 			this.session = session;
 		}
 
+		public Release Get(int id)
+		{
+			return session.Load<Release>(id);
+		}
+
 		[HttpOperation(HttpMethod.GET)]
 		public ReleaseCreateModel Add()
 		{
