@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using DizzleRasta.Web.Resources;
+using OpenRasta.Web;
 using Raven.Client;
 
 namespace DizzleRasta.Web.Handlers

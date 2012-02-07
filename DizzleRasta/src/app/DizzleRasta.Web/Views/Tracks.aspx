@@ -11,7 +11,7 @@
     <title>Tracks</title>
 </head>
 <body>
-   <h1>Tracks</h1>
+   <h1>Random Tracks</h1>
    
    <% foreach (var track in Resource) {  %>
 

@@ -146,6 +146,7 @@
     </Compile>
     <Compile Include="Handlers\ArtistsHandler.cs" />
     <Compile Include="Handlers\HomeHandler.cs" />
+    <Compile Include="Handlers\ReleaseHandler.cs" />
     <Compile Include="Handlers\ReleasesHandler.cs" />
     <Compile Include="Handlers\TracksHandler.cs" />
     <Compile Include="Infrastructure\DocumentStoreHolder.cs" />

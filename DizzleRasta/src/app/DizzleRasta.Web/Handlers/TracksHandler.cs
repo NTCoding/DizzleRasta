@@ -3,34 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using DizzleRasta.Web.Resources;
+using Raven.Client;
 
 namespace DizzleRasta.Web.Handlers
 {
 	public class TracksHandler
 	{
-		private TracksRetriever retriever = new TracksRetriever();
-       
-	    public object Get()
-		{
-			return retriever.GetAllTracks();
-		}
-	}
+		private readonly IDocumentSession session;
 
-	public class TracksRetriever
-	{
-	    public IEnumerable<Track> GetAllTracks()
+		public TracksHandler(IDocumentSession session)
 		{
-			for (int i = 0; i < 10; i++)
-			{
-				yield return new Track
-				{
-					Id       = 100 + i,
-					Title    = "Track " + i,
-					Version  = "1.0",
-					ArtistId = 1,
-					Price    = 1.50m
-				};
-			}
+			this.session = session;
+		}
+
+		public object Get()
+		{
+			return session
+				.Query<Track>()
+				.Customize(x => x.RandomOrdering())
+				.Take(50);
 		}
 	}
 }
