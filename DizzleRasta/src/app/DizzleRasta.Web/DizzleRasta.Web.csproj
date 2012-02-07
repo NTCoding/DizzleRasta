@@ -123,6 +123,7 @@
     <Content Include="%40App_Data\Raven\raven-data.ico" />
     <Content Include="Default.aspx" />
     <Content Include="Raven.Studio.xap" />
+    <Content Include="Views\AddRelease.aspx" />
     <Content Include="Views\Artists.aspx" />
     <Content Include="Views\HomeView.aspx" />
     <Content Include="Views\Releases.aspx" />

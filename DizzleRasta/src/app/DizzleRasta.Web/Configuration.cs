@@ -37,10 +37,25 @@ namespace DizzleRasta.Web
 					.RenderedByAspx("~/Views/Releases.aspx");
 
 				ResourceSpace.Has
+					.ResourcesOfType<ReleaseCreateModel>()
+					.AtUri("/releases/add")
+					.HandledBy<ReleaseHandler>()
+					.RenderedByAspx("~/Views/AddRelease.aspx");
+
+				// TODO - don't like all the manual configurations - look for a conventional way (a la Fubu)
+
+				ResourceSpace.Has
+					.ResourcesOfType<ReleaseInputModel>()
+					.AtUri("/releases/add")
+					.HandledBy<ReleaseHandler>();
+
+				ResourceSpace.Has
 					.ResourcesOfType<IEnumerable<Track>>()
 					.AtUri("/tracks")
 					.HandledBy<TracksHandler>()
 					.RenderedByAspx("~/Views/Tracks.aspx");
+
+				
 
 				// TODO - fork and fix or use different container?
 				//ResourceSpace.Uses.Resolver.AddDependencyInstance<IDocumentSession>(

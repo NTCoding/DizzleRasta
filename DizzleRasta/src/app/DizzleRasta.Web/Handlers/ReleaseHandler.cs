@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using DizzleRasta.Web.Resources;
 using OpenRasta.Web;
+using OpenRasta.Web.Markup;
+using OpenRasta.Web.Markup.Elements;
+using OpenRasta.Web.Markup.Modules;
 using Raven.Client;
 
 namespace DizzleRasta.Web.Handlers
@@ -21,10 +24,20 @@ namespace DizzleRasta.Web.Handlers
 		{
 			return new ReleaseCreateModel
 			            	{
-								Artists = session
-								.Query<Artist>()
-								.ToDictionary(a => a.Name, a => a.Id)
+								Artists = GetArtistSelect()
 			            	};
+		}
+
+		private IEnumerable<GenericElement> GetArtistSelect()
+		{
+			var artists = session.Query<Artist>().ToList(); // slooooow
+			foreach (var artist in artists)
+			{
+				var e = new GenericElement("option"){Value = artist.Id.ToString()};
+				e.ChildNodes.Add(new TextNode(artist.Name));
+
+				yield return e;
+			}
 		}
 
 		[HttpOperation(HttpMethod.POST)]
@@ -50,7 +63,7 @@ namespace DizzleRasta.Web.Handlers
 
 	public class ReleaseCreateModel : ReleaseInputModel
 	{
-		public Dictionary<string, int> Artists { get; set; }
+		public IEnumerable<IOptionElement> Artists { get; set; }
 	}
 
 	public class ReleaseInputModel
