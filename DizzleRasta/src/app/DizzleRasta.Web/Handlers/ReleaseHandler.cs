@@ -61,7 +61,11 @@ namespace DizzleRasta.Web.Handlers
 			
 			session.SaveChanges(); // TODO - fix session management and this goes
 
-			return new OperationResult.OK(new {Resource = release});
+			var redirectLocation = release.CreateUri();
+
+			var path = redirectLocation.AbsolutePath.ToString();
+
+			return new OperationResult.Created {ResponseResource = release};
 		}
 
 	}

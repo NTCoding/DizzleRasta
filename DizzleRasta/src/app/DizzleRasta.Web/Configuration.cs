@@ -61,8 +61,6 @@ namespace DizzleRasta.Web
 					.HandledBy<TracksHandler>()
 					.RenderedByAspx("~/Views/Tracks.aspx");
 
-				
-
 				// TODO - fork and fix or use different container?
 				//ResourceSpace.Uses.Resolver.AddDependencyInstance<IDocumentSession>(
 				//    DocumentStoreHolder.DocumentStore.OpenSession(),DependencyLifetime.PerRequest);
