@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using DizzleRasta.Web.Resources;
+using FubuValidation;
 using OpenRasta.Web;
 using OpenRasta.Web.Markup;
 using OpenRasta.Web.Markup.Elements;
@@ -54,7 +55,7 @@ namespace DizzleRasta.Web.Handlers
 			              		ImageUrl = model.ImageUrl,
 			              		Title    = model.Title,
 			              		Type     = model.Type,
-			              		Version  = model.Version
+			              		Version  = model.Version.Value
 			              	};
 
 			session.Store(release);
@@ -77,14 +78,19 @@ namespace DizzleRasta.Web.Handlers
 
 	public class ReleaseInputModel
 	{
+		[Required]
 		public int ArtistId { get; set; }
 
-		public int Version { get; set; }
+		[Required]
+		public int? Version { get; set; }
 
+		[Required]
 		public string Type { get; set; }
 
+		[Required]
 		public string Title { get; set; }
 
+		[Required]
 		public string ImageUrl { get; set; }
 	}
 }

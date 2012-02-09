@@ -1,0 +1,3 @@
+﻿name: DizzleRasta
+depends: openwrap anchored content
+depends: openrasta-full

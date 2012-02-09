@@ -1,4 +1,5 @@
 <%@ Page Language="C#" Inherits="OpenRasta.Codecs.WebForms.ResourceView<ReleaseCreateModel>"  %>
+<%@ Import Namespace="FubuValidation" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -12,6 +13,19 @@
 </head>
 <body>
     <h1>Add Release</h1>
+	<%
+		var c = Resolver.Resolve(typeof(ICommunicationContext)) as ICommunicationContext;
+		var errors = c.PipelineData["Validation"] as ValidationError[];
+    %>
+
+	<% if (errors != null && errors.Any()) { %>
+	   <div id="errors">
+	   <ul>
+	<% foreach (var e in errors) {  %>
+
+		<li><%:e.field + ": " + e.message%></li>
+
+	<% } %> </ul></div> <% } %>
 
 	<% using(scope(Xhtml.Form(new ReleaseInputModel()).Method("POST"))) { %>
 	  

@@ -4,8 +4,10 @@ using DizzleRasta.Web.Handlers;
 using DizzleRasta.Web.Infrastructure;
 using DizzleRasta.Web.Infrastructure.Pipeline;
 using DizzleRasta.Web.Resources;
+using FubuValidation;
 using OpenRasta.Configuration;
 using OpenRasta.DI;
+using OpenRasta.OperationModel.Interceptors;
 using Raven.Client;
 
 namespace DizzleRasta.Web
@@ -66,6 +68,10 @@ namespace DizzleRasta.Web
 				//    DocumentStoreHolder.DocumentStore.OpenSession(),DependencyLifetime.PerRequest);
 
 				ResourceSpace.Uses.Resolver.AddDependencyInstance<IDocumentSession>(DocumentStoreHolder.DocumentStore.OpenSession());
+
+				ResourceSpace.Uses.Resolver.AddDependencyInstance<IValidator>(Validator.BasicValidator());
+
+				ResourceSpace.Uses.CustomDependency<IOperationInterceptor, ValidationInterceptor>(DependencyLifetime.Transient);
 
 				ResourceSpace.Uses.PipelineContributor<SessionCloser>();
 

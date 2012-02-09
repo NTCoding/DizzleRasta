@@ -1,0 +1,10 @@
+﻿name: openrasta-full
+title: OpenRasta including all packages
+description: The OpenRasta Full Stack contains every package available as part of the openrasta framework, but without the development tools.
+use-project-repository: false
+depends: openrasta-core = 2.1
+depends: openrasta-sharpview = 2.1
+depends: openrasta-hosting-aspnet = 2.1
+depends: openrasta-codecs-webforms = 2.1
+depends: openrasta-codecs-sharpview = 2.1
+version: 2.1.1.81135390
