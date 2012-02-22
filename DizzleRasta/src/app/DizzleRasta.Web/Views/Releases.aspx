@@ -13,15 +13,22 @@
 <body>
 	<h1>Releases</h1>
 	
+	<h2>Queries</h2>
 	<form action="/releases" method="post">
 
 		<p>
 			<label>Search term: </label>
 			<input type="text" name="SearchTerm" />
+			<input type="submit" />
 		</p>
-		<input type="submit" />
+		<p>
+			<input type="submit" name="GetSingles" value="Show only singles" />
+		</p>
+		
 
 	</form>
+	<br />
+	<hr />
 
 	<% foreach (var release in Resource) {  %>
 

@@ -26,15 +26,50 @@ namespace DizzleRasta.Web.Handlers
 
 		public IEnumerable<Release> Post(ReleasesQueryModel model)
 		{
+			if (model.IsForSearch)
+			{
+				return GetNamesLike(model.SearchTerm);
+			}
+
+			if (model.IsForSingles)
+			{
+				return GetSingles();
+			}
+
+			return Get();
+		}
+
+		private IEnumerable<Release> GetSingles()
+		{
 			return session
 				.Advanced
 				.LuceneQuery<Release>()
-				.Where("Title: " + model.SearchTerm + "~");
+				.Where("Type:\"Single\"");
+		}
+
+		private IEnumerable<Release> GetNamesLike(string searchTerm)
+		{
+			return session
+				.Advanced
+				.LuceneQuery<Release>()
+				.Where("Title: " + searchTerm + "~");
 		}
 	}
 
 	public class ReleasesQueryModel
 	{
 		public string SearchTerm { get; set; }
+
+		public bool IsForSearch
+		{
+			get { return !String.IsNullOrWhiteSpace(SearchTerm); }
+		}
+
+		public string GetSingles { get; set; }
+		
+		public bool IsForSingles
+		{
+			get { return !String.IsNullOrWhiteSpace(GetSingles); }
+		}
 	}
 }
