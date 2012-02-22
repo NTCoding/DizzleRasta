@@ -36,7 +36,20 @@ namespace DizzleRasta.Web.Handlers
 				return GetSingles();
 			}
 
+			if (model.IsForArtist)
+			{
+				return GetReleasesFor(model.Artist);
+			}
+
 			return Get();
+		}
+
+		private IEnumerable<Release> GetReleasesFor(string artist)
+		{
+			return session
+				.Advanced
+				.LuceneQuery<Release>()
+				.Where("ArtistId: " + artist);
 		}
 
 		private IEnumerable<Release> GetSingles()
@@ -70,6 +83,13 @@ namespace DizzleRasta.Web.Handlers
 		public bool IsForSingles
 		{
 			get { return !String.IsNullOrWhiteSpace(GetSingles); }
+		}
+
+		public string Artist { get; set; }
+
+		public bool IsForArtist
+		{
+			get { return !String.IsNullOrWhiteSpace(Artist); }
 		}
 	}
 }

@@ -19,10 +19,10 @@
 		<p>
 			<label>Search term: </label>
 			<input type="text" name="SearchTerm" />
-			<input type="submit" />
+			<input type="submit" value="search" />
 		</p>
 		<p>
-			<input type="submit" name="GetSingles" value="Show only singles" />
+			<input type="submit" name="GetSingles" value="Show all singles" />
 		</p>
 		
 
@@ -39,6 +39,12 @@
 		</p>
 		<p>
 			<%: release.Type %>
+		</p>
+		<p>
+			<form action="/releases" method="post">
+				<input type="hidden" name="Artist" value="<%: release.ArtistId %>" />
+				<input type="submit" value="Get all releases for this artist" />
+			</form>
 		</p>
 		<br />
 	</div>
