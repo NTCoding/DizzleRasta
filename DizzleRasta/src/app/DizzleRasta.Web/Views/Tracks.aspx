@@ -13,6 +13,16 @@
 <body>
    <h1>Random Tracks</h1>
    
+   <h2>Queries</h2>
+   <form action="/tracks" method="post">
+		<p>
+			<label>Price Min:</label> <input type="text" name="PriceMin" /> 
+			<label>Price Max: </label> <input type="text" name="PriceMax" />
+			<input type="submit" value="Search by price" />
+		</p>
+   </form>
+   <br />
+   <hr />
    <% foreach (var track in Resource) {  %>
 
 	<div style="border-bottom: solid 2px red;">

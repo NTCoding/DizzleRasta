@@ -14,6 +14,7 @@
    <h1><%: Resource.Title %></h1>
    <ul>
 		<li><a href="/releases/">Releases</a></li>
+		<li><a href="/tracks/">Tracks</a></li>
    </ul>
 </body>
 </html>

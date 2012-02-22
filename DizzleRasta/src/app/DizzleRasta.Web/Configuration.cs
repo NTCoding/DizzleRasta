@@ -66,6 +66,7 @@ namespace DizzleRasta.Web
 				//ResourceSpace.Uses.Resolver.AddDependencyInstance<IDocumentSession>(
 				//    DocumentStoreHolder.DocumentStore.OpenSession(),DependencyLifetime.PerRequest);
 
+				// TODO - open new instance at beginnig of each session
 				ResourceSpace.Uses.Resolver.AddDependencyInstance<IDocumentSession>(DocumentStoreHolder.DocumentStore.OpenSession());
 
 				ResourceSpace.Uses.Resolver.AddDependencyInstance<IValidator>(Validator.BasicValidator());
