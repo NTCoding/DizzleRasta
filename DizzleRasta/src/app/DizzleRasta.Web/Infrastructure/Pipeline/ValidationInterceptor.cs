@@ -4,6 +4,8 @@ using System.Linq;
 using System.Reflection;
 using DizzleRasta.Web.Handlers;
 using FubuValidation;
+using OpenRasta;
+using OpenRasta.Hosting.AspNet;
 using OpenRasta.OperationModel;
 using OpenRasta.OperationModel.Interceptors;
 using OpenRasta.Pipeline;
@@ -26,9 +28,8 @@ namespace DizzleRasta.Web.Infrastructure.Pipeline
 		{
 			var input = operation.Inputs.FirstOrDefault();
 
-			if (input == null) return true;
-
-			if (!GetModelTypesName(input).EndsWith("inputmodel")) return true;
+			// TODO pluggable
+			if (!ShouldValidate(input)) return true;
 
 			var model = input.Binder.BuildObject().Instance;
 
@@ -38,15 +39,37 @@ namespace DizzleRasta.Web.Infrastructure.Pipeline
 
 			context.PipelineData.Add("Validation", validationResult.ToValidationErrors());
 
-			context.OperationResult = new OperationResult.BadRequest
+			context.OperationResult = new OperationResult.BadRequest()
 			{
-				ResponseResource = Activator.CreateInstance(GetClassThatInherits(model.GetType()))
+				ResponseResource = ExecuteGetActionFor(model)
 			};
 
 			return false;
 		}
 
-		private Type GetClassThatInherits(Type type)
+		private object ExecuteGetActionFor(object model)
+		{
+			var viewModelType = GetTypeThatInherits(model.GetType());
+
+			var handlerType = context.PipelineData.HandlerType;
+
+			var getAction = handlerType
+				.GetMethods()
+				.Single(m => m.ReturnType == viewModelType);
+
+			var handler = context.PipelineData.SelectedHandlers.Single();
+
+			return getAction.Invoke(handler, null);
+		}
+
+		private bool ShouldValidate(InputMember input)
+		{
+			return input != null
+				   && input.Member.Type.Name.ToLower().EndsWith("inputmodel")
+			       && context.Request.HttpMethod.ToLower() == "post";
+		}
+
+		private Type GetTypeThatInherits(Type type)
 		{
 			return Assembly
 				.GetAssembly(type)
@@ -54,11 +77,6 @@ namespace DizzleRasta.Web.Infrastructure.Pipeline
 				.Where(t => type.IsAssignableFrom(t))
 				.Where(t => t != type)
 				.Single();
-		}
-
-		private string GetModelTypesName(InputMember input)
-		{
-			return input.Member.Type.Name.ToLower();
 		}
 	}
 }

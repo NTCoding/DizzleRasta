@@ -16,13 +16,25 @@ namespace DizzleRasta.Web.Handlers
 			this.session = session;
 		}
 
-		public object Get()
+		public IEnumerable<Release> Get()
 		{
 			return session
 				.Query<Release>()
 				.Customize(q => q.RandomOrdering())
 				.Take(50);
 		}
+
+		public IEnumerable<Release> Post(ReleasesQueryModel model)
+		{
+			return session
+				.Advanced
+				.LuceneQuery<Release>()
+				.Where("Title: " + model.SearchTerm + "~");
+		}
 	}
-	
+
+	public class ReleasesQueryModel
+	{
+		public string SearchTerm { get; set; }
+	}
 }

@@ -19,7 +19,7 @@
     %>
 
 	<% if (errors != null && errors.Any()) { %>
-	   <div id="errors">
+	   <div id="errors" style="color: Red;">
 	   <ul>
 	<% foreach (var e in errors) {  %>
 
@@ -55,7 +55,7 @@
 	  </p>
 	  
 
-	  <input type="submit" value="Create that mofo" />
+	  <input type="submit" value="Create" />
 
 	<% } %>
 

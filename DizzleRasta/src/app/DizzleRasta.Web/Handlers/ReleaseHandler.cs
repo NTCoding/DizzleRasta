@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using DizzleRasta.Web.Resources;
+using DizzleRasta.Web.Services;
 using FubuValidation;
 using OpenRasta.Web;
 using OpenRasta.Web.Markup;
@@ -60,11 +61,7 @@ namespace DizzleRasta.Web.Handlers
 
 			session.Store(release);
 			
-			session.SaveChanges(); // TODO - fix session management and this goes
-
-			var redirectLocation = release.CreateUri();
-
-			var path = redirectLocation.AbsolutePath.ToString();
+			session.SaveChanges(); 
 
 			return new OperationResult.Created {ResponseResource = release};
 		}

@@ -13,6 +13,16 @@
 <body>
 	<h1>Releases</h1>
 	
+	<form action="/releases" method="post">
+
+		<p>
+			<label>Search term: </label>
+			<input type="text" name="SearchTerm" />
+		</p>
+		<input type="submit" />
+
+	</form>
+
 	<% foreach (var release in Resource) {  %>
 
 	<div style="border-bottom: solid 2px red;">

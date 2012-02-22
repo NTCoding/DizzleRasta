@@ -12,8 +12,8 @@
 </head>
 <body>
    <h1><%: Resource.Title %></h1>
-   <p>
-	  
-   </p>
+   <ul>
+		<li><a href="/releases/">Releases</a></li>
+   </ul>
 </body>
 </html>
